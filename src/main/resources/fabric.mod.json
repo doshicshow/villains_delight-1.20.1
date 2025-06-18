@@ -1,0 +1,55 @@
+{
+	"schemaVersion": 1,
+	"id": "villains_delight",
+	"version": "${version}",
+	"name": "villains_delight",
+	"description": "Man I could eat a horse.. -Ghoul",
+	"authors": [
+		"Just Doshic"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/villains_delight/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "just_doshic.villains_delight.VillainsDelight",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "just_doshic.villains_delight.VillainsDelightClient",
+				"adapter": "kotlin"
+			}
+		],
+		"fabric-datagen": [
+			{
+				"value": "just_doshic.villains_delight.VillainsDelightDataGenerator",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"villains_delight.mixins.json",
+		{
+			"config": "villains_delight.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.20.1",
+		"farmersdelight": "1.20.1-2.4.0",
+		"java": ">=17",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
