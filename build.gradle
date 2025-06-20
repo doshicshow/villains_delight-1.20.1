@@ -15,8 +15,6 @@ repositories {
 	// Other repositories can go above or below Modrinth's. We don't need priority :)
 	maven { url = "https://api.modrinth.com/maven" }
 
-
-
 	// farmers delight repos
 	flatDir {
 		dirs 'mods'
@@ -28,7 +26,7 @@ repositories {
 
 	maven {
 		url = "https://www.cursemaven.com"
-		allowInsecureProtocol = true
+		// allowInsecureProtocol = true // This is generally not recommended, consider using HTTPS or verifying integrity
 	}
 
 	maven {
@@ -78,7 +76,8 @@ loom {
 }
 
 fabricApi {
-	configureDataGeneration {
+	configureDataGeneration() {
+		modId = "villains_delight"
 		client = true
 	}
 }
@@ -97,20 +96,19 @@ dependencies {
 	modImplementation "maven.modrinth:farmers-delight-refabricated:1.20.1-2.4.0"
 
 	// farmers delight dependencies
-	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	// The following two lines are redundant as they are already defined above
+	// minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	// modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
-
-
-	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}")))
+	include(implementation("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}"))
+	annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}") // MixinExtras needs to be on annotationProcessor as well
 	annotationProcessor 'net.fabricmc:sponge-mixin:0.12.5+mixin.0.8.5'
 
 	include(modImplementation("com.github.Chocohead:Fabric-ASM:${fabric_asm_version}")) {
 		exclude (group: "net.fabricmc.fabric-api")
 	}
 
-	for (String module in port_lib_modules.split(",")) {
+	for (module in port_lib_modules.split(",")) {
 		include(modApi("io.github.fabricators_of_create.Porting-Lib:$module:$port_lib_version"))
 	}
 
@@ -145,13 +143,25 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	it.options.release = 17
+	// Add the following lines to enable command line shortening
+	options.fork = true
+	options.forkOptions.jvmArgs += ['-Xmx1G'] // Optional, can remove if not needed
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
 	kotlinOptions {
-		jvmTarget = 17
+		jvmTarget = "17" // Changed to String as recommended by Kotlin Gradle Plugin
 	}
 }
+
+tasks.register('printClasspath') {
+	doLast {
+		println "Classpath length: " + sourceSets.main.runtimeClasspath.asPath.length()
+		println "Classpath:"
+		sourceSets.main.runtimeClasspath.each { println it }
+	}
+}
+
 
 java {
 	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task

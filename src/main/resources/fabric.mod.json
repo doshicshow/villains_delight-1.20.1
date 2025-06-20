@@ -29,7 +29,7 @@
 		],
 		"fabric-datagen": [
 			{
-				"value": "just_doshic.villains_delight.VillainsDelightDataGenerator",
+				"value": "just_doshic.villains_delight.datagen.VillainsDelightDataGenerator",
 				"adapter": "kotlin"
 			}
 		]
