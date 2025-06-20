@@ -20,7 +20,7 @@ object VDItems {
     val VD_ITEM_GROUP_KEY: RegistryKey<ItemGroup> = RegistryKey.of(Registries.ITEM_GROUP.key, Identifier(MOD_ID, "vd_item_group"))
     private val VD_ITEM_GROUP: ItemGroup = FabricItemGroup.builder()
         .icon { ItemStack(HORSE_MEAT) } // temp icon
-        .displayName(Text.translatable("itemGroup.vd_item_group"))
+        .displayName(Text.translatable("itemGroup.villains_delight.vd_item_group"))
         .build()
 
     lateinit var HORSE_MEAT: Item
