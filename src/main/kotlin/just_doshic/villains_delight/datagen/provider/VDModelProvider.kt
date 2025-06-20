@@ -1,5 +1,4 @@
 
-import just_doshic.villains_delight.VillainsDelight.MOD_ID
 import just_doshic.villains_delight.registry.VDItems
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider

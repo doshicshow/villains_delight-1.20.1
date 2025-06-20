@@ -2,8 +2,8 @@ package just_doshic.villains_delight.datagen
 
 
 import VDModelProvider
-import just_doshic.villains_delight.datagen.provider.VDEnglishLangProvider
 import just_doshic.villains_delight.datagen.provider.VDAdvancementsProvider
+import just_doshic.villains_delight.datagen.provider.VDEnglishLangProvider
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
 	id 'fabric-loom' version "${loom_version}"
 	id 'maven-publish'
@@ -13,14 +15,15 @@ base {
 
 repositories {
 	// Other repositories can go above or below Modrinth's. We don't need priority :)
+	mavenCentral()
 	maven { url = "https://api.modrinth.com/maven" }
+
+	mavenLocal()
 
 	// farmers delight repos
 	flatDir {
 		dirs 'mods'
 	}
-
-	mavenLocal()
 
 	maven { url "https://maven.parchmentmc.org" }
 
@@ -93,12 +96,9 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
 
 	// farmers delight
-	modImplementation "maven.modrinth:farmers-delight-refabricated:1.20.1-2.4.0"
+	modImplementation "maven.modrinth:farmers-delight-refabricated:${project.farmers_delight_version}"
 
 	// farmers delight dependencies
-	// The following two lines are redundant as they are already defined above
-	// minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	// modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 
 	include(implementation("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}"))
 	annotationProcessor("io.github.llamalad7:mixinextras-fabric:${mixin_extras_version}") // MixinExtras needs to be on annotationProcessor as well
@@ -148,7 +148,7 @@ tasks.withType(JavaCompile).configureEach {
 	options.forkOptions.jvmArgs += ['-Xmx1G'] // Optional, can remove if not needed
 }
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+tasks.withType(KotlinCompile).all {
 	kotlinOptions {
 		jvmTarget = "17" // Changed to String as recommended by Kotlin Gradle Plugin
 	}
