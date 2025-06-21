@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.10-SNAPSHOT'
 	id 'maven-publish'
+	id "org.jetbrains.kotlin.jvm" version "2.1.21"
 }
 
 
@@ -80,7 +81,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	options.release = 17
+	options.release = 21
 	options.fork = true
 	options.forkOptions.jvmArgs += ['-Xmx1G']
 }
@@ -95,6 +96,6 @@ tasks.register('printClasspath') {
 
 java {
 	withSourcesJar()
-	sourceCompatibility = JavaVersion.VERSION_17
-	targetCompatibility = JavaVersion.VERSION_17
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
