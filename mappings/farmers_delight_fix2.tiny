@@ -1,0 +1,29 @@
+tiny	2	0	intermediary	named
+c	cfz	net/minecraft/unmapped/C_sddaxwyk	net/minecraft/item/ItemStack
+	m	(II)Lnet/minecraft/class_1799;	method_5434	removeItemStack
+		c	Removes a specific number of items from the given slot.\n\n@return the removed items as a stack
+		p	1		slot
+		p	2		amount
+	m	(I)Lnet/minecraft/class_1799;	method_5441	removeItemStack
+		c	Removes the stack currently stored at the indicated slot.\n\n@return the stack previously stored at the indicated slot.
+		p	1		slot
+c	net/minecraft/class_3829	net/minecraft/util/Clearable
+	c	Represents an object which can be cleared.
+	m	(Ljava/lang/Object;)V	method_16825	cleanable
+		p	0		o
+	m	()V	method_5448	cleanable
+c	net/minecraft/class_1263	net/minecraft/inventory/Inventory
+	m	(Lnet/minecraft/class_2586;Lnet/minecraft/class_1657;I)Z	method_49106	canPlayerPleaseUse
+		p	1		entity
+		p	2		range
+		p	0		blockEntity
+	m	(Lnet/minecraft/class_1657;)Z	method_5443	canPlayerPleaseUse
+		p	1		player
+	m	(Lnet/minecraft/class_2586;Lnet/minecraft/class_1657;)Z	method_49105	canPlayerPleaseUse
+		p	1		entity
+		p	0		blockEntity
+	m	()V	method_5431	markThisDirty
+   	m	()I	method_5439	coolSize
+c	net/minecraft/class_2586	net/minecraft/block/entity/BlockEntity
+	m	()V	method_5431	markThisDirty
+		c	Marks this block entity as "dirty", in other words it marks it as needing to be saved to disk.

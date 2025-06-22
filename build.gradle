@@ -11,6 +11,8 @@ repositories {
 		url = 'https://maven.greenhouseteam.dev/releases/'
 	}
 	maven { url = "https://mvn.devos.one/snapshots/" } // Porting Lib
+	maven { url = "https://mvn.devos.one/releases" } // Porting Lib but more lib and porting
+	maven { url = "https://maven.quiltmc.org/repository/release/" }
 	maven {
 		url "https://maven.jamieswhiteshirt.com/libs-release" // Reach Entity Attributes (Required by Porting Lib)
 		content {
@@ -45,25 +47,29 @@ loom {
 fabricApi {
 	configureDataGeneration() {
 		modId = "villains_delight"
+		client = true
 	}
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings loom.officialMojangMappings()
+	mappings loom.layered {
+		mappings("org.quiltmc:quilt-mappings:1.20.1+build.23:intermediary-v2")
+//		mappings file("mappings/farmers_delight_fix2.tiny")
+	}
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation("vectorwing:FarmersDelight:${fdrf_version}") {
 		exclude(group: "net.fabricmc")
 	}
 
+	modImplementation("net.fabricmc:fabric-language-kotlin:1.13.3+kotlin.2.1.21")
+
 	modImplementation include("com.terraformersmc.terraform-api:terraform-wood-api-v1:${project.terraform_wood_api_version}")
 
-	//Fabric ASM
-	modImplementation include ("com.github.Chocohead:Fabric-ASM:v2.3")
+	// Fabric ASM
+	modImplementation include("com.github.Chocohead:Fabric-ASM:v2.3")
 }
-
 
 processResources {
 	inputs.property "version", project.version
