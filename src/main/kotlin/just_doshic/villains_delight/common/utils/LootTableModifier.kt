@@ -1,6 +1,6 @@
-package just_doshic.villains_delight.utils
+package just_doshic.villains_delight.common.utils
 
-import just_doshic.villains_delight.utils.modifiers.HorsePool
+import just_doshic.villains_delight.common.utils.modifiers.HorsePool
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents
 import net.minecraft.util.Identifier
 

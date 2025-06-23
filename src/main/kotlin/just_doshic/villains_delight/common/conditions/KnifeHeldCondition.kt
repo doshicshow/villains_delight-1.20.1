@@ -1,4 +1,4 @@
-package just_doshic.villains_delight.conditions
+package just_doshic.villains_delight.common.conditions
 
 
 import net.minecraft.loot.condition.EntityPropertiesLootCondition

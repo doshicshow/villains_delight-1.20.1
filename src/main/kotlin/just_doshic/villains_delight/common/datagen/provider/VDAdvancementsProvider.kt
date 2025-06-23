@@ -1,7 +1,7 @@
-package just_doshic.villains_delight.datagen.provider
+package just_doshic.villains_delight.common.datagen.provider
 
 import just_doshic.villains_delight.VillainsDelight.MOD_ID
-import just_doshic.villains_delight.registry.VDItems.HORSE_MEAT
+import just_doshic.villains_delight.common.registry.VDObjects.HORSE_MEAT
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider
 import net.minecraft.advancement.Advancement

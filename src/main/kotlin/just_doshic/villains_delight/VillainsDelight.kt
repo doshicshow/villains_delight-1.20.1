@@ -1,7 +1,7 @@
 package just_doshic.villains_delight
 
-import just_doshic.villains_delight.registry.VDItems
-import just_doshic.villains_delight.utils.LootTableModifier
+import just_doshic.villains_delight.common.registry.VDObjects
+import just_doshic.villains_delight.common.utils.LootTableModifier
 import net.fabricmc.api.ModInitializer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -13,7 +13,7 @@ object VillainsDelight : ModInitializer {
 
 	override fun onInitialize() {
 		logger.info("{} Has initialized", MOD_ID)
-		VDItems.init()
+		VDObjects.registerAll()
 		LootTableModifier.modifyLootTables()
 	}
 }

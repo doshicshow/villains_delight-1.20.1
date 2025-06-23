@@ -1,7 +1,7 @@
-package just_doshic.villains_delight.utils.modifiers
+package just_doshic.villains_delight.common.utils.modifiers
 
-import just_doshic.villains_delight.conditions.KnifeHeldCondition.Companion.knifeHeldCondition
-import just_doshic.villains_delight.registry.VDItems.HORSE_MEAT
+import just_doshic.villains_delight.common.conditions.KnifeHeldCondition.Companion.knifeHeldCondition
+import just_doshic.villains_delight.common.registry.VDObjects.HORSE_MEAT
 import net.minecraft.loot.LootPool
 import net.minecraft.loot.condition.RandomChanceLootCondition
 import net.minecraft.loot.entry.ItemEntry

@@ -1,4 +1,4 @@
-package just_doshic.villains_delight.datagen.provider
+package just_doshic.villains_delight.common.datagen.provider
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider
